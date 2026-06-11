@@ -1,0 +1,14 @@
+{
+  "$schema": "./skills.schema.json",
+  "skills": [
+    {
+      "id": "get-ghl-workflow-json",
+      "name": "Get GHL Workflow JSON",
+      "version": "1.0.0",
+      "summary": "Capture, export, and validate GoHighLevel / HighLevel workflow JSON from the builder's read-only internal endpoints.",
+      "dir": "get-ghl-workflow-json",
+      "tags": ["gohighlevel", "ghl", "highlevel", "workflow", "json", "export"],
+      "requires": ["python3"]
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "name": "agent-skills",
+  "version": "1.0.0",
+  "description": "Installable agent skills for Claude Code & Codex. Pick skills, pick targets, install. Zero dependencies.",
+  "type": "module",
+  "bin": {
+    "agent-skills": "bin/cli.mjs"
+  },
+  "files": [
+    "bin/",
+    "lib/",
+    "skills/",
+    "skills.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "start": "node bin/cli.mjs",
+    "list": "node bin/cli.mjs list"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "codex",
+    "agent",
+    "skills",
+    "ai",
+    "gohighlevel",
+    "ghl",
+    "installer"
+  ],
+  "author": "uxieee",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uxieee/agent-skills.git"
+  },
+  "bugs": {
+    "url": "https://github.com/uxieee/agent-skills/issues"
+  },
+  "homepage": "https://github.com/uxieee/agent-skills#readme"
+}
