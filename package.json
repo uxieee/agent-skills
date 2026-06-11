@@ -1,8 +1,11 @@
 {
-  "name": "agent-skills",
+  "name": "@uxieee/agent-skills",
   "version": "1.0.0",
   "description": "Installable agent skills for Claude Code & Codex. Pick skills, pick targets, install. Zero dependencies.",
   "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
   "bin": {
     "agent-skills": "bin/cli.mjs"
   },

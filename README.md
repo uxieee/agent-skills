@@ -9,27 +9,27 @@ A small `npx` installer that copies skills into your agent's skills directory (`
 Run the interactive installer — no install, no clone:
 
 ```bash
-npx github:uxieee/agent-skills
+npx @uxieee/agent-skills
 ```
 
 You'll be asked which skills to install and where. That's it. Restart your agent (or start a new session) and the skill is available.
 
-> Requires **Node.js 18+**.
+> Requires **Node.js 18+**. Prefer to run straight from source? `npx github:uxieee/agent-skills` works too.
 
 ## Usage
 
 ```bash
 # Interactive wizard (recommended)
-npx github:uxieee/agent-skills
+npx @uxieee/agent-skills
 
 # List available skills
-npx github:uxieee/agent-skills list
+npx @uxieee/agent-skills list
 
 # Install specific skills, non-interactively
-npx github:uxieee/agent-skills install get-ghl-workflow-json --target claude,codex
+npx @uxieee/agent-skills install get-ghl-workflow-json --target claude,codex
 
 # Install everything, overwrite existing, no prompts
-npx github:uxieee/agent-skills install --all --target claude --force --yes
+npx @uxieee/agent-skills install --all --target claude --force --yes
 ```
 
 ### Install options
