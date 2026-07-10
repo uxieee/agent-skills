@@ -58,6 +58,14 @@ Capture, export, and validate **GoHighLevel / HighLevel** workflow JSON from the
 - **Requires:** `python3` on your PATH (for the bundled throttle + validation scripts).
 - Triggers when you ask an agent to get/download/export/inspect a HighLevel workflow's JSON, or paste an `app.gohighlevel.com` workflow URL.
 
+### `create-ghl-workflow`
+
+Build and publish **GoHighLevel / HighLevel** workflows via the internal builder API — the **write** counterpart to `get-ghl-workflow-json`. Runs the full `create → auto-save steps → trigger → publish` sequence, harvesting real UI-created steps to mirror their exact shape (so the steps actually open in the builder).
+
+- **This skill writes to your GHL account.** It is draft-first by design — it builds and verifies everything as a draft and requires explicit confirmation before the publish step — but it is not read-only. Only install it if you intend to create workflows programmatically.
+- **Requires:** Node 18+ (bundled `.js` callers use native `fetch`). ID discovery (form / custom-field / contact IDs) uses the GHL public MCP if available.
+- Triggers when you ask an agent to create/build/publish a HighLevel workflow or add a trigger/action/step via the API.
+
 ## How it works
 
 Each skill is a self-contained folder under [`skills/`](./skills). The installer reads [`skills.json`](./skills.json) (the registry), copies the selected skill folder into the target directory, and preserves executable bits on any `.py` / `.sh` helpers. No files outside the chosen skills directory are touched. Nothing runs at install time except the copy.
@@ -82,7 +90,7 @@ Each skill is a self-contained folder under [`skills/`](./skills). The installer
 
 ## Safety
 
-These skills automate real accounts. `get-ghl-workflow-json` is read-only by design and throttled, but you are responsible for how you use it on accounts you have authorization to access. Review a skill's `SKILL.md` before installing it.
+These skills automate real accounts. `get-ghl-workflow-json` is read-only by design and throttled. `create-ghl-workflow` **writes** to your account (draft-first, with a confirmation gate before publishing) — treat it accordingly. Both drive GHL's undocumented internal API, which is off-ToS; you are responsible for how you use them on accounts you have authorization to access. Review a skill's `SKILL.md` before installing it.
 
 ## License
 

@@ -9,6 +9,16 @@
       "dir": "get-ghl-workflow-json",
       "tags": ["gohighlevel", "ghl", "highlevel", "workflow", "json", "export"],
       "requires": ["python3"]
+    },
+    {
+      "id": "create-ghl-workflow",
+      "name": "Create GHL Workflow",
+      "version": "1.0.0",
+      "summary": "Build and publish GoHighLevel / HighLevel workflows via the internal builder API — the WRITE counterpart to get-ghl-workflow-json. Draft-first; confirms before publishing.",
+      "dir": "create-ghl-workflow",
+      "tags": ["gohighlevel", "ghl", "highlevel", "workflow", "create", "write", "publish", "automation"],
+      "requires": ["node"],
+      "write": true
     }
   ]
 }
