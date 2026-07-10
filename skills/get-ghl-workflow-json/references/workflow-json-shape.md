@@ -53,7 +53,7 @@ Preserve it as-is. Do not reshape it to match the workflow config.
 
 ## Common Capture Problems
 
-- `401`: token came from the wrong origin or expired. Re-capture the iframe `token-id`.
+- `401`: token came from the wrong origin or expired, or you sent the retired `token-id` header. Send `Authorization: Bearer <JWT>` and re-capture the iframe JWT if needed.
 - `403` or `429`: call throttle rejection and stop.
 - HTML/text body: request likely hit the wrong origin, wrong endpoint, or an auth error. Save failed wrapper for debugging.
 - Missing `workflowData.templates`: file is not the workflow config or the backend shape changed.
