@@ -14,7 +14,7 @@ Capture the raw JSON behind a HighLevel workflow builder view, preserve it on di
 - Use the user's own logged-in browser session; do not ask for or store credentials.
 - Capture only one location/sub-account per session unless the user explicitly asks to switch.
 - Call `scripts/throttle.py wait` before every internal fetch. If any fetch returns `429` or `403`, call `scripts/throttle.py reject <status>`, stop, and tell the user.
-- Use the scoped iframe `token-id` header. Do not use `refreshedToken` or other localStorage tokens.
+- Use the scoped iframe JWT via the `Authorization: Bearer <JWT>` header. Do not use `refreshedToken` or other localStorage tokens. (The old `token-id` header was retired in GHL's 2026-07 auth migration and now returns 401.)
 
 ## Default Workflow
 
@@ -22,7 +22,7 @@ Capture the raw JSON behind a HighLevel workflow builder view, preserve it on di
    - Workflow URL shape: `https://app.gohighlevel.com/location/{LOCATION_ID}/workflow/{WORKFLOW_ID}`.
    - If either ID is missing, ask for the workflow URL or both IDs.
 2. Load `references/capture-runbook.md` for the exact browser/JWT procedure.
-3. Capture the scoped `token-id` from the workflow builder iframe request.
+3. Capture the scoped JWT from the workflow builder iframe request's `Authorization: Bearer` header.
 4. Fetch the workflow config and trigger JSON by default.
 5. Fetch optional related JSON only when useful or requested: sticky notes, step counts, workflow settings, trigger/action catalogs, pipelines, or custom values.
 6. Save raw responses under the current working project:

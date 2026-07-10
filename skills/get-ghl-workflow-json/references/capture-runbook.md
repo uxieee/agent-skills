@@ -47,15 +47,17 @@ workflow/{LOCATION_ID}/{first-8-chars-of-WORKFLOW_ID}
 Use a `200` workflow response whose request headers include:
 
 ```text
-token-id: eyJ...
+authorization: Bearer eyJ...
 referer: https://client-app-automation-workflows.leadconnectorhq.com/
 channel: APP
 version: 2021-07-28
 ```
 
-Reject tokens from `referer: https://app.gohighlevel.com/`; those are not scoped for the workflow backend and usually return `401`.
+Copy the `authorization` value and strip the leading `Bearer ` — the `eyJ...` part is the JWT (`TOKEN`). Reject tokens from requests whose `referer` is `https://app.gohighlevel.com/`; those are not scoped for the workflow backend and usually return `401`.
 
-If no `token-id` appears, ask the user to reload the workflow page or manually open the workflow in their logged-in browser, then inspect network requests again.
+> **Auth note (GHL migrated 2026-07):** the backend now authenticates via `Authorization: Bearer <JWT>`. The old `token-id` header returns `401`. If you still see requests using `token-id`, you're on stale traffic — use the `authorization` header.
+
+If no `authorization: Bearer` header appears, ask the user to reload the workflow page or manually open the workflow in their logged-in browser, then inspect network requests again.
 
 ## 4. Switch To The Iframe Origin
 
@@ -92,7 +94,7 @@ async () => {
   const res = await fetch(URL, {
     method: "GET",
     headers: {
-      "token-id": TOKEN,
+      "authorization": "Bearer " + TOKEN,
       "channel": "APP",
       "source": "WEB_USER",
       "version": "2021-07-28",
@@ -176,4 +178,4 @@ Report validation warnings plainly. Do not pretend a partial capture is complete
 
 ## 10. Expiry And Re-Capture
 
-The iframe JWT usually expires around one hour after issue. If a fetch returns `401`, reload the workflow in the parent GHL app, capture a fresh iframe `token-id`, and continue only after that succeeds.
+The iframe JWT usually expires around one hour after issue. If a fetch returns `401`, reload the workflow in the parent GHL app, capture a fresh iframe `Authorization: Bearer` JWT, and continue only after that succeeds.
