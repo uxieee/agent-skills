@@ -1,3 +1,8 @@
+> ⚠️ **DEPRECATED (2026-07):** The GHL skills in this repo (`get-ghl-workflow-json`,
+> `create-ghl-workflow`) have moved to the `ghl` Claude Code plugin and no longer
+> receive updates here — the next GHL auth change will break these copies.
+> Install instead: `/plugin marketplace add uxieee/ghl-plugin`.
+
 # agent-skills
 
 > Installable [agent skills](https://docs.claude.com/en/docs/claude-code/skills) for **Claude Code** & **Codex**. Pick the skills you want, pick where to install them, done. Zero runtime dependencies.
